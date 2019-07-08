@@ -12,28 +12,8 @@ struct Node
 class LinkedList
 {
 public:
-	LinkedList() : mHead(nullptr), mTail(nullptr) {}
-	~LinkedList()
-	{
-		if (mHead == nullptr)
-		{
-			return;
-		}
-
-		Node* t1 = mHead;
-		Node* t2 = mHead->next;
-
-		while (t1 != nullptr)
-		{
-			delete t1;
-			t1 = t2;
-
-			if (t2 != nullptr)
-			{
-				t2 = t2->next;
-			}
-		}
-	}
+	LinkedList();
+	~LinkedList();
 
 	void AddNode(int num);
 	Node* GetHead();
@@ -43,6 +23,34 @@ private:
 	Node* mHead;
 	Node* mTail;
 };
+
+LinkedList::LinkedList() 
+	: mHead(nullptr)
+	, mTail(nullptr)
+{
+}
+
+LinkedList::~LinkedList()
+{
+	if (mHead == nullptr)
+	{
+		return;
+	}
+
+	Node* t1 = mHead;
+	Node* t2 = mHead->next;
+
+	while (t1 != nullptr)
+	{
+		delete t1;
+		t1 = t2;
+		
+		if (t2 != nullptr)
+		{
+			t2 = t2->next;
+		}
+	}
+}
 
 void LinkedList::AddNode(int num)
 {
